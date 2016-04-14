@@ -27,7 +27,7 @@ class MyComponent extends Component {
 
 ## New Prop Types
 
-All props expose basic and `isRequired` versions.
+All validators expose basic and `isRequired` versions.
 
 ### Collections
 - `iterable`: An array or an object.
@@ -41,7 +41,7 @@ All props expose basic and `isRequired` versions.
 - `time`: A value parsable by `new Date()`.
 - `uuid`: A uuid string.
 - `locale`: A locale string, like `en-US` or `jp`
-- `emailAddress`: An email address (taken from the highest-upvoted SO answer)
+- `emailAddress`: An email address (regex taken from the highest-upvoted SO answer)
 
 ### CSS
 - `percent`: A percentage.
