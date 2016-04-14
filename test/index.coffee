@@ -13,9 +13,9 @@ assertInvalid = (propTypes, props) ->
 
 describe "Custom PropTypes Validators", ->
 
-  describe "regex", ->
+  describe "stringMatching", ->
 
-    propTypes = str: PropTypes.regex /^a+$/
+    propTypes = str: PropTypes.stringMatching /^a+$/
 
     it "invalid if not a string", ->
       props = str: false

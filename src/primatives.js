@@ -13,7 +13,7 @@ export const color = makeStaticValidator(makeRegexValidator(/^(rgba?\((\d+),\s*(
 export const locale = makeStaticValidator(makeRegexValidator(/(^[a-z]{2}-[A-Z]{2}$)|(^[a-z]{2}$)/));
 export const emailAddress = makeStaticValidator(makeRegexValidator(/^(?=\S{3,128}$)[^\s\\;,:]+@[^\s\\;,:\.]{1}[^\s\\;,:]*\.[^\s\\;,:0-9]+$/));
 
-export const regex = makeConfigurableValidator(makeRegexValidator);
+export const stringMatching = makeConfigurableValidator(makeRegexValidator);
 export const stringWithLength = makeConfigurableValidator(function(min, max) {
   if (!(min instanceof Number)) throw new Error("Must provide a number as the min length for a stringWithLength validator");
   if (max != null && !(max instanceof Number)) throw new Error("Must provide a number (or null) as the max length for a stringWithLength validator");

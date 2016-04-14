@@ -1,24 +1,24 @@
 # Extended Prop Types
-Useful proptypes for react components
+Useful proptypes for React components.  Developed for and tested on ClassDojo's web app.
 
 ## Usage
 Call the exported function on the standard React `proptypes` object.
-```
+```js
 import {PropTypes} from "react";
 import ExtendPropTypes from "extended-proptypes";
 
 ExtendPropTypes(PropTypes);
 ```
 
-PropTypes will now be available.
-```
+New options will now be available on React's `PropTypes` export.
+```js
 import {Component, PropTypes} from "react";
 
 class MyComponent extends Component {
   
   static propTypes = {
     myDate: PropTypes.date,
-    mySatanicString: PropTypes.regex(/^6+$/).isRequired,
+    mySatanicString: PropTypes.stringMatching(/^6+$/).isRequired,
     myArrayOrObject: PropTypes.iterableOf(PropTypes.bool),
   };
 }
@@ -33,12 +33,12 @@ All props expose basic and `isRequired` versions.
 - `iterable`: An array or an object.
 - `iterableOf(validator)`: An array or object whose values match the provided validator.
 - `keyedObject(regex)`: An object whose keys match the provided regex.
-- `keyedObjectOf(regex, validator): An object whose keys match the provided regex and whose values match the provided validator.
+- `keyedObjectOf(regex, validator)`: An object whose keys match the provided regex and whose values match the provided validator.
 
 ### General Primatives
-- `regex(regex)`: A string that matches the provided regex.
+- `stringMatching(regex)`: A string that matches the provided regex.
 - `stringWithLength(min, max=Infinity)`: A string with length between min and max.
-- `time`: A number, a date object, or a string parsable by `new Date()`.
+- `time`: A value parsable by `new Date()`.
 - `uuid`: A uuid string.
 - `locale`: A locale string, like `en-US` or `jp`
 - `emailAddress`: An email address (taken from the highest-upvoted SO answer)
