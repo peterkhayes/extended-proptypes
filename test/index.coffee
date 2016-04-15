@@ -209,10 +209,10 @@ describe "Custom PropTypes Validators", ->
       props = time: new Date()
       assertValid propTypes, props
 
-  describe "iterable", ->
+  describe "collection", ->
     
     propTypes =
-      items: PropTypes.iterable
+      items: PropTypes.collection
 
     it "invalid if neither an array nor object", ->
       props = items: "hello"
@@ -229,10 +229,10 @@ describe "Custom PropTypes Validators", ->
 
       assertValid propTypes, props
 
-  describe "iterableOf", ->
+  describe "collectionOf", ->
     
     propTypes =
-      items: PropTypes.iterableOf PropTypes.shape
+      items: PropTypes.collectionOf PropTypes.shape
         str: PropTypes.string.isRequired
         int: PropTypes.number
 

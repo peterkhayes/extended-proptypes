@@ -11,9 +11,6 @@
   },
   "repository": "git@github.com:peterkhayes/extended-proptypes.git",
   "author": "Peter Hayes",
-  "dependencies": {
-    "is-plain-object": "^2.0.1"
-  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-eslint": "^6.0.2",

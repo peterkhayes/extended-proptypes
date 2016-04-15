@@ -2,46 +2,74 @@
 Useful proptypes for React components.  Developed for and tested on ClassDojo's web app.
 
 ## Usage
-Call the exported function on the standard React `proptypes` object.
+Individual validators can be imported under `/validators`.
 ```js
-import {PropTypes} from "react";
-import ExtendPropTypes from "extended-proptypes";
+import keyedObject from "extended-proptypes/validators/keyedObject";
 
-ExtendPropTypes(PropTypes);
+class MyComponent extends Component {
+  
+  static propTypes = {
+    mySpecialObject: keyedObject(/keyregex/).isRequired,
+  };
+}
 ```
 
-New options will now be available on React's `PropTypes` export.
+You can also import the whole module and call it on `React.PropTypes`, extending
+React's `PropTypes` with all included validators.
+
 ```js
-import {Component, PropTypes} from "react";
+import {PropTypes} from "react";
+import ExtendedPropTypes from "extended-proptypes";
+
+// New options will now be available on React's `PropTypes` export.
+ExtendedPropTypes(PropTypes);
 
 class MyComponent extends Component {
   
   static propTypes = {
     myDate: PropTypes.date,
     mySatanicString: PropTypes.stringMatching(/^6+$/).isRequired,
-    myArrayOrObject: PropTypes.iterableOf(PropTypes.bool),
+    myArrayOrObject: PropTypes.collectionOf(PropTypes.bool),
   };
 }
-
 ```
+
+Finally, all validators are properties of the module.
+```js
+import ExtendedPropTypes from "extended-proptypes";
+
+// New options will now be available on React's `PropTypes` export.
+ExtendedPropTypes(PropTypes);
+
+class MyComponent extends Component {
+  
+  static propTypes = {
+    myEmailAddress: ExtendedPropTypes.emailAddress.isRequired,
+  };
+}
+```
+
 
 ## New Prop Types
 
 All validators expose basic and `isRequired` versions.
 
 ### Collections
-- `iterable`: An array or an object.
-- `iterableOf(validator)`: An array or object whose values match the provided validator.
+- `collection`: An array or a plain object.
+- `collectionOf(validator)`: An array or a plain object whose values match the provided validator.
+- `iterable`: An iterable. Errors if enviroment does not support symbols.
+- `iterableOf(validator)`: An iterable whose values match the provided validator. Errors if enviroment does not support symbols.
 - `keyedObject(regex)`: An object whose keys match the provided regex.
 - `keyedObjectOf(regex, validator)`: An object whose keys match the provided regex and whose values match the provided validator.
 
 ### General Primatives
 - `stringMatching(regex)`: A string that matches the provided regex.
 - `stringWithLength(min, max=Infinity)`: A string with length between min and max.
+- `hex`: A string consisting of hex characters, with an optional 0x at the beginning.
 - `time`: A value parsable by `new Date()`.
-- `uuid`: A uuid string.
-- `locale`: A locale string, like `en-US` or `jp`
-- `emailAddress`: An email address (regex taken from the highest-upvoted SO answer)
+- `uuid`: A uuid string (e.g. `123e4567-e89b-12d3-a456-426655440000`).
+- `locale`: A locale string, like `en-US` or `jp`.
+- `emailAddress`: An email address (regex taken from the highest-upvoted SO answer).
 
 ### CSS
 - `percent`: A percentage.
@@ -53,7 +81,3 @@ All validators expose basic and `isRequired` versions.
 - `mongoId`: A 24-character hex string.
 - `mongoIdKeyedObject`: An object whose keys are mongo ids.
 - `mongoIdKeyedObjectOf(validator)`: An object whose keys are mongo ids and whose values match the provided validator.
-
-## Upcoming
-- Single exports
-- Use without extending
