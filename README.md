@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/peterkhayes/ih.svg?branch=master)](https://travis-ci.org/classdojo/rolling-rate-limiter)  
+[![Build Status](https://travis-ci.org/peterkhayes/extended-proptypes.svg?branch=master)](https://travis-ci.org/peterkhayes/extended-proptypes)  
 # Extended Prop Types
 Useful proptypes for React components.  Developed for and tested on ClassDojo's web app.
 
