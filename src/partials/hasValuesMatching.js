@@ -7,5 +7,5 @@ export default function hasValuesMatching (validator) {
       const validatorError = validator(obj, key);
       if (validatorError) return validatorError;
     }
-  }
+  };
 }
