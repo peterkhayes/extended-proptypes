@@ -38,9 +38,6 @@ Finally, all validators are properties of the module.
 ```js
 import ExtendedPropTypes from "extended-proptypes";
 
-// New options will now be available on React's `PropTypes` export.
-ExtendedPropTypes(PropTypes);
-
 class MyComponent extends Component {
   
   static propTypes = {
