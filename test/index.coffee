@@ -1,4 +1,4 @@
-PropTypes = require("React").PropTypes;
+PropTypes = require("react").PropTypes;
 require("../lib")(PropTypes);
 
 assertValid = (propTypes, props) ->
