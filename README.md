@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/peterkhayes/extended-proptypes.svg?branch=master)](https://travis-ci.org/peterkhayes/extended-proptypes)  
+[![Build Status](https://travis-ci.org/peterkhayes/extended-proptypes.svg?branch=master)](https://travis-ci.org/peterkhayes/extended-proptypes)  [![Coverage Status](https://coveralls.io/repos/github/peterkhayes/extended-proptypes/badge.svg?branch=master)](https://coveralls.io/github/peterkhayes/extended-proptypes?branch=master)
 # Extended Prop Types
 Useful proptypes for React components.  Developed for and tested on ClassDojo's web app.
 
