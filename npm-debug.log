@@ -1,18 +1,18 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'ci-test' ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'travis' ]
 2 info using npm@3.3.6
 3 info using node@v5.0.0
-4 verbose run-script [ 'preci-test', 'ci-test', 'postci-test' ]
-5 info lifecycle extended-proptypes@1.1.1~preci-test: extended-proptypes@1.1.1
-6 silly lifecycle extended-proptypes@1.1.1~preci-test: no script for preci-test, continuing
-7 info lifecycle extended-proptypes@1.1.1~ci-test: extended-proptypes@1.1.1
-8 verbose lifecycle extended-proptypes@1.1.1~ci-test: unsafe-perm in lifecycle true
-9 verbose lifecycle extended-proptypes@1.1.1~ci-test: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/peterhayes/Code/personal/prop-types/node_modules/.bin:/Users/peterhayes/.cabal/bin:/Applications/ghc-7.10.1.app/Contents/bin:/Users/peterhayes/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin
-10 verbose lifecycle extended-proptypes@1.1.1~ci-test: CWD: /Users/peterhayes/Code/personal/prop-types
-11 silly lifecycle extended-proptypes@1.1.1~ci-test: Args: [ '-c', 'npm install && npm run lint && npm test' ]
-12 silly lifecycle extended-proptypes@1.1.1~ci-test: Returned: code: 1  signal: null
-13 info lifecycle extended-proptypes@1.1.1~ci-test: Failed to exec ci-test script
-14 verbose stack Error: extended-proptypes@1.1.1 ci-test: `npm install && npm run lint && npm test`
+4 verbose run-script [ 'pretravis', 'travis', 'posttravis' ]
+5 info lifecycle extended-proptypes@1.1.2~pretravis: extended-proptypes@1.1.2
+6 silly lifecycle extended-proptypes@1.1.2~pretravis: no script for pretravis, continuing
+7 info lifecycle extended-proptypes@1.1.2~travis: extended-proptypes@1.1.2
+8 verbose lifecycle extended-proptypes@1.1.2~travis: unsafe-perm in lifecycle true
+9 verbose lifecycle extended-proptypes@1.1.2~travis: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/peterhayes/Code/personal/extended-proptypes/node_modules/.bin:/Users/peterhayes/.cabal/bin:/Applications/ghc-7.10.1.app/Contents/bin:/Users/peterhayes/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin
+10 verbose lifecycle extended-proptypes@1.1.2~travis: CWD: /Users/peterhayes/Code/personal/extended-proptypes
+11 silly lifecycle extended-proptypes@1.1.2~travis: Args: [ '-c', 'npm run lint && npm run coverage' ]
+12 silly lifecycle extended-proptypes@1.1.2~travis: Returned: code: 1  signal: null
+13 info lifecycle extended-proptypes@1.1.2~travis: Failed to exec travis script
+14 verbose stack Error: extended-proptypes@1.1.2 travis: `npm run lint && npm run coverage`
 14 verbose stack Exit status 1
 14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:233:16)
 14 verbose stack     at emitTwo (events.js:87:13)
@@ -22,20 +22,20 @@
 14 verbose stack     at ChildProcess.emit (events.js:172:7)
 14 verbose stack     at maybeClose (internal/child_process.js:818:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
-15 verbose pkgid extended-proptypes@1.1.1
-16 verbose cwd /Users/peterhayes/Code/personal/prop-types
+15 verbose pkgid extended-proptypes@1.1.2
+16 verbose cwd /Users/peterhayes/Code/personal/extended-proptypes
 17 error Darwin 15.4.0
-18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "ci-test"
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "travis"
 19 error node v5.0.0
 20 error npm  v3.3.6
 21 error code ELIFECYCLE
-22 error extended-proptypes@1.1.1 ci-test: `npm install && npm run lint && npm test`
+22 error extended-proptypes@1.1.2 travis: `npm run lint && npm run coverage`
 22 error Exit status 1
-23 error Failed at the extended-proptypes@1.1.1 ci-test script 'npm install && npm run lint && npm test'.
+23 error Failed at the extended-proptypes@1.1.2 travis script 'npm run lint && npm run coverage'.
 23 error This is most likely a problem with the extended-proptypes package,
 23 error not with npm itself.
 23 error Tell the author that this fails on your system:
-23 error     npm install && npm run lint && npm test
+23 error     npm run lint && npm run coverage
 23 error You can get their info via:
 23 error     npm owner ls extended-proptypes
 23 error There is likely additional logging output above.

@@ -6,7 +6,8 @@
   "env": {
     "browser": false,
     "commonjs": true,
-    "es6": true
+    "es6": true,
+    "mocha": true
   },
   "rules": {
     "consistent-return": 0,
