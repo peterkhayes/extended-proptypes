@@ -1,4 +1,4 @@
-const PropTypes = require("react").PropTypes;
+const PropTypes = require("proptypes");
 require("../src")(PropTypes);
 
 function assertValid (propTypes, props) {
