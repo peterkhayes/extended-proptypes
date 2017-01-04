@@ -52,6 +52,9 @@ class MyComponent extends Component {
 
 All validators expose basic and `isRequired` versions.
 
+### React:
+- `elementWithType(Type)`: A react element matching the provided type, which may be a class or a function.
+
 ### Collections
 - `collection`: An array or a plain object.
 - `collectionOf(validator)`: An array or a plain object whose values match the provided validator.
@@ -61,6 +64,7 @@ All validators expose basic and `isRequired` versions.
 - `keyedObjectOf(regex, validator)`: An object whose keys match the provided regex and whose values match the provided validator.
 
 ### General Primatives
+- `primative`: a number, a string, or a boolean.
 - `stringMatching(regex)`: A string that matches the provided regex.
 - `stringWithLength(min, max=Infinity)`: A string with length between min and max.
 - `hex`: A string consisting of hex characters, with an optional 0x at the beginning.

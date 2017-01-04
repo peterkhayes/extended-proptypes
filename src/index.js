@@ -3,6 +3,7 @@ import collectionOf         from "./validators/collectionOf";
 import color                from "./validators/color";
 import cssLength            from "./validators/cssLength";
 import cssSize              from "./validators/cssSize";
+import elementWithType      from "./validators/elementWithType";
 import emailAddress         from "./validators/emailAddress";
 import hex                  from "./validators/hex";
 import iterable             from "./validators/iterable";
@@ -14,6 +15,7 @@ import mongoId              from "./validators/mongoId";
 import mongoIdKeyedObject   from "./validators/mongoIdKeyedObject";
 import mongoIdKeyedObjectOf from "./validators/mongoIdKeyedObjectOf";
 import percent              from "./validators/percent";
+import primative            from "./validators/primative";
 import stringMatching       from "./validators/stringMatching";
 import stringWithLength     from "./validators/stringWithLength";
 import time                 from "./validators/time";
@@ -25,6 +27,7 @@ const validators = {
   color,
   cssLength,
   cssSize,
+  elementWithType,
   emailAddress,
   hex,
   iterable,
@@ -36,6 +39,7 @@ const validators = {
   mongoIdKeyedObject,
   mongoIdKeyedObjectOf,
   percent,
+  primative,
   stringMatching,
   stringWithLength,
   time,

@@ -1,4 +1,5 @@
 const PropTypes = require("proptypes");
+const React = require("react");
 require("../src")(PropTypes);
 
 function assertValid (propTypes, props) {
@@ -20,6 +21,67 @@ function assertInvalid (propTypes, props) {
 }
 
 describe("Custom PropTypes Validators", () => {
+
+  describe("primative", () => {
+    
+    const propTypes = {primative: PropTypes.primative};
+    const requiredPropTypes = {primative: PropTypes.primative.isRequired};
+
+    it("invalid if a function", () => {
+      const props = {primative: () => null};
+      assertInvalid(propTypes, props);
+    });
+
+    it("invalid if an array", () => {
+      const props = {primative: []};
+      assertInvalid(propTypes, props);
+    });
+
+    it("invalid if an object", () => {
+      const props = {primative: {}};
+      assertInvalid(propTypes, props);
+    });
+
+    it("invalid if a date", () => {
+      const props = {primative: new Date()};
+      assertInvalid(propTypes, props);
+    });
+
+    it("valid if a string", () => {
+      const props = {primative: "53768e40d1d126f814a00866"};
+      assertValid(propTypes, props);
+    });
+  
+    it("valid if a number", () => {
+      const props = {primative: 1234};
+      assertValid(propTypes, props);
+    });
+  
+    it("valid if a boolean", () => {
+      const props = {primative: false};
+      assertValid(propTypes, props);
+    });
+  
+    it("valid if null and not required", () => {
+      const props = {primative: null};
+      assertValid(propTypes, props);
+    });
+  
+    it("valid if undefined and not required", () => {
+      const props = {primative: undefined};
+      assertValid(propTypes, props);
+    });
+
+    it("invalid if null and required", () => {
+      const props = {primative: null};
+      assertInvalid(requiredPropTypes, props);
+    });
+    
+    it("invalid if undefined and required", () => {
+      const props = {primative: undefined};
+      assertInvalid(requiredPropTypes, props);
+    });
+  });
 
   describe("stringMatching", () => {
 
@@ -457,5 +519,65 @@ describe("Custom PropTypes Validators", () => {
 
       assertValid(otherPropTypes, props);
     });
+  });
+
+  describe("elementWithType", () => {
+    
+    class ClassComponent extends React.Component {}
+    class ClassComponent2 extends React.Component {}
+    function FunctionalComponent () {}
+    function FunctionalComponent2 () {}
+
+    const propTypes = {
+      component: PropTypes.elementWithType(ClassComponent)
+    };
+
+    it("invalid if not a component", () => {
+      const props = {component: "hello!"};
+      assertInvalid(propTypes, props);
+    });
+
+    describe("for class components", () => {
+
+      it("invalid if an instance of a functional component", () => {
+        const props = {component: React.createElement(FunctionalComponent, {})};
+        assertInvalid(propTypes, props);
+      });
+
+      it("invalid if an instance of another class component", () => {
+        const props = {component: React.createElement(ClassComponent2, {})};
+        assertInvalid(propTypes, props);
+      });
+
+      it("valid if an instance of the specified component", () => {
+        const props = {component: React.createElement(ClassComponent, {})};
+        assertValid(propTypes, props);
+      });
+
+    });
+
+    describe("for functional components", () => {
+
+      const functionalPropTypes = {
+        component: PropTypes.elementWithType(FunctionalComponent),
+      };
+
+      it("invalid if an instance of a class component", () => {
+        const props = {component: React.createElement(ClassComponent, {})};
+        assertInvalid(functionalPropTypes, props);
+      });
+
+      it("invalid if an instance of another functional component", () => {
+        const props = {component: React.createElement(FunctionalComponent2, {})};
+        assertInvalid(functionalPropTypes, props);
+      });
+
+      it("valid if an instance of the specified component", () => {
+        const props = {component: React.createElement(FunctionalComponent, {})};
+        assertValid(functionalPropTypes, props);
+      });
+
+    });
+
   });
 });

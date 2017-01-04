@@ -1,6 +1,6 @@
 {
   "name": "extended-proptypes",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Useful proptypes for react components",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,8 @@
     "lodash": "^3.8.0",
     "mocha": "^2.3.4",
     "mocha-lcov-reporter": "^1.2.0",
-    "proptypes": "^0.14.3"
+    "proptypes": "^0.14.3",
+    "react": "^15.4.1"
   },
   "keywords": [
     "react",
