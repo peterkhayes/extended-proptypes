@@ -58,16 +58,15 @@ All validators expose basic and `isRequired` versions.
 ### Collections
 - `collection`: An array or a plain object.
 - `collectionOf(validator)`: An array or a plain object whose values match the provided validator.
-- `iterable`: An iterable. Errors if enviroment does not support symbols.
-- `iterableOf(validator)`: An iterable whose values match the provided validator. Errors if enviroment does not support symbols.
 - `keyedObject(regex)`: An object whose keys match the provided regex.
 - `keyedObjectOf(regex, validator)`: An object whose keys match the provided regex and whose values match the provided validator.
+- `iterable`: An iterable. Errors if enviroment does not support symbols.
 
 ### General Primatives
 - `constant(val)`: The provided val, only.
 - `primative`: a number, a string, or a boolean.
 - `stringMatching(regex)`: A string that matches the provided regex.
-- `stringWithLength(min, max=Infinity)`: A string with length between min and max.
+- `stringWithLength(min, max=Infinity)`: A string with length between min and max, inclusive. If only one argument is provided, requires exactly that length.
 - `hex`: A string consisting of hex characters, with an optional 0x at the beginning.
 - `date`: A date object.
 - `dateBetween(min, max=Infinity)`: A date object which is within the provided interval.
@@ -80,7 +79,7 @@ All validators expose basic and `isRequired` versions.
 ### CSS
 - `percent`: A percentage.
 - `cssLength`: A single css length, like `24px`, `43%` or `4rem`.
-- `cssSize`: Between 1 and 4 css sizes.
+- `cssSize`: Between 1 and 4 css lengths.
 - `color`: A hex or rgb(a) string
 
 ### MongoDB-specific
