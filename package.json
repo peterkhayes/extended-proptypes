@@ -1,14 +1,15 @@
 {
   "name": "extended-proptypes",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Useful proptypes for react components",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha",
     "coverage": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "lint": "eslint src",
+    "lint": "eslint src test --quiet",
     "build": "babel src -d lib",
     "prepublish": "npm run lint && npm test && npm run build",
+    "precommit": "npm run lint && npm test && node ./scripts/precommit.js",
     "travis": "npm run lint && npm run coverage"
   },
   "repository": "git@github.com:peterkhayes/extended-proptypes.git",
@@ -17,13 +18,16 @@
     "babel": "^5.8.20",
     "babel-eslint": "^6.0.2",
     "coveralls": "^2.11.9",
-    "eslint": "^2.6.0",
+    "eslint": "^3.18.0",
+    "eslint-config-classdojo": "^1.2.5",
+    "husky": "^0.13.3",
     "istanbul": "^0.4.3",
     "lodash": "^3.8.0",
     "mocha": "^2.3.4",
     "mocha-lcov-reporter": "^1.2.0",
     "proptypes": "^0.14.3",
-    "react": "^15.4.1"
+    "react": "^15.4.1",
+    "require-uncached": "^1.0.3"
   },
   "keywords": [
     "react",

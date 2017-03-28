@@ -1,0 +1,1 @@
+export default (val) => new Date(val).toString() !== "Invalid Date";

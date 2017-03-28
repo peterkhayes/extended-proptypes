@@ -1,12 +1,12 @@
 import makeConfigurableValidator from "../factories/makeConfigurableValidator";
 
-function getDisplayName(Component) {
+function getDisplayName (Component) {
   return Component.displayName ||
     Component.name ||
-    (typeof Component === 'string' ? Component : 'Component');
+    (typeof Component === "string" ? Component : "Component");
 }
 
-export default makeConfigurableValidator(function(type) { 
+export default makeConfigurableValidator(function(type) {
 
   return function(props, propName) {
     const component = props[propName];

@@ -8,7 +8,7 @@ Individual validators can be imported under `/validators`.
 import keyedObject from "extended-proptypes/validators/keyedObject";
 
 class MyComponent extends Component {
-  
+
   static propTypes = {
     mySpecialObject: keyedObject(/keyregex/).isRequired,
   };
@@ -26,7 +26,7 @@ import ExtendedPropTypes from "extended-proptypes";
 ExtendedPropTypes(PropTypes);
 
 class MyComponent extends Component {
-  
+
   static propTypes = {
     myDate: PropTypes.date,
     mySatanicString: PropTypes.stringMatching(/^6+$/).isRequired,
@@ -40,7 +40,7 @@ Finally, all validators are properties of the module.
 import ExtendedPropTypes from "extended-proptypes";
 
 class MyComponent extends Component {
-  
+
   static propTypes = {
     myEmailAddress: ExtendedPropTypes.emailAddress.isRequired,
   };
@@ -64,11 +64,15 @@ All validators expose basic and `isRequired` versions.
 - `keyedObjectOf(regex, validator)`: An object whose keys match the provided regex and whose values match the provided validator.
 
 ### General Primatives
+- `constant(val)`: The provided val, only.
 - `primative`: a number, a string, or a boolean.
 - `stringMatching(regex)`: A string that matches the provided regex.
 - `stringWithLength(min, max=Infinity)`: A string with length between min and max.
 - `hex`: A string consisting of hex characters, with an optional 0x at the beginning.
+- `date`: A date object.
+- `dateBetween(min, max=Infinity)`: A date object which is within the provided interval.
 - `time`: A value parsable by `new Date()`.
+- `timeBetween(min, max=Infinity)`: A value parsable by `new Date()` which is within the provided interval.
 - `uuid`: A uuid string (e.g. `123e4567-e89b-12d3-a456-426655440000`).
 - `locale`: A locale string, like `en-US` or `jp`.
 - `emailAddress`: An email address (regex taken from the highest-upvoted SO answer).
