@@ -1,6 +1,6 @@
 {
   "name": "extended-proptypes",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Useful proptypes for react components",
   "main": "lib/index.js",
   "scripts": {

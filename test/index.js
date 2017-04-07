@@ -27,4 +27,14 @@ describe("index file", () => {
     });
   });
 
+  // NOTE: THIS TEST MUST BE LAST
+  it("can work by requiring `extend` file", () => {
+    const PropTypes = require("proptypes");
+    require("../src/extend");
+
+    validators.forEach((validator) => {
+      assert(PropTypes[validator], `should have added ${validator} to proptypes object`);
+    });
+  });
+
 });

@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/peterkhayes/extended-proptypes.svg?branch=master)](https://travis-ci.org/peterkhayes/extended-proptypes)  [![Coverage Status](https://coveralls.io/repos/github/peterkhayes/extended-proptypes/badge.svg?branch=master)](https://coveralls.io/github/peterkhayes/extended-proptypes?branch=master)
 # Extended Prop Types
+
 Useful proptypes for React components.  Developed for and tested on ClassDojo's web app.
 
 ## Usage
@@ -15,9 +16,23 @@ class MyComponent extends Component {
 }
 ```
 
-You can also import the whole module and call it on `React.PropTypes`, extending
-React's `PropTypes` with all included validators.
+If you want to extend React's `PropTypes` with all included validators, you can
+import `extended-proptypes/lib/extend`.
+```js
+import {PropTypes} from "react";
+import `extended-proptypes/lib/extend`;
 
+class MyComponent extends Component {
+
+  static propTypes = {
+    myEmailAddress: PropTypes.emailAddress.isRequired,
+    myArrayOrObject: PropTypes.collectionOf(PropTypes.bool),
+  };
+}
+```
+
+
+Or, you can also import the whole module and call it on `React.PropTypes`.
 ```js
 import {PropTypes} from "react";
 import ExtendedPropTypes from "extended-proptypes";
@@ -28,25 +43,11 @@ ExtendedPropTypes(PropTypes);
 class MyComponent extends Component {
 
   static propTypes = {
-    myDate: PropTypes.date,
+    myDate: PropTypes.date.isRequired,
     mySatanicString: PropTypes.stringMatching(/^6+$/).isRequired,
-    myArrayOrObject: PropTypes.collectionOf(PropTypes.bool),
   };
 }
 ```
-
-Finally, all validators are properties of the module.
-```js
-import ExtendedPropTypes from "extended-proptypes";
-
-class MyComponent extends Component {
-
-  static propTypes = {
-    myEmailAddress: ExtendedPropTypes.emailAddress.isRequired,
-  };
-}
-```
-
 
 ## New Prop Types
 
