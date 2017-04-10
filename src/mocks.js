@@ -1,0 +1,30 @@
+function noop () {};
+function noopThunk () { return noop; }
+
+module.exports = {
+  collection: noopThunk,
+  collectionOf: noopThunk,
+  color: noopThunk,
+  constant: noopThunk,
+  cssLength: noopThunk,
+  cssSize: noopThunk,
+  date: noopThunk,
+  dateBetween: noopThunk,
+  elementWithType: noopThunk,
+  emailAddress: noopThunk,
+  hex: noopThunk,
+  iterable: noopThunk,
+  keyedObject: noopThunk,
+  keyedObjectOf: noopThunk,
+  locale: noopThunk,
+  mongoId: noopThunk,
+  mongoIdKeyedObject: noopThunk,
+  mongoIdKeyedObjectOf: noopThunk,
+  percent: noopThunk,
+  primative: noopThunk,
+  stringMatching: noopThunk,
+  stringWithLength: noopThunk,
+  time: noopThunk,
+  timeBetween: noopThunk,
+  uuid: noopThunk,
+};
