@@ -4,9 +4,22 @@
 Useful proptypes for React components.  Developed for and tested on ClassDojo's web app.
 
 ## Usage
-Individual validators can be imported under `/validators`.
+This module exports a set of proptype validators.
 ```js
-import keyedObject from "extended-proptypes/validators/keyedObject";
+import ExtendedPropTypes from "extended-proptypes";
+
+class MyComponent extends Component {
+
+  static propTypes = {
+    myDate: ExtendedPropTypes.date.isRequired,
+    mySatanicString: ExtendedPropTypes.stringMatching(/^6+$/).isRequired,
+  };
+}
+```
+
+If you only need a few of the provided functions, individual validators can be imported under `/lib/validators`.
+```js
+import keyedObject from "extended-proptypes/lib/validators/keyedObject";
 
 class MyComponent extends Component {
 
@@ -16,11 +29,13 @@ class MyComponent extends Component {
 }
 ```
 
-If you want to extend React's `PropTypes` with all included validators, you can
-import `extended-proptypes/lib/extend`.
+It may be convenient to not have to reference both the original proptypes object and also this one. To resolve this, you can use one of two methods:
+  * `extended-proptypes/lib/extend-from-react` imports `{PropTypes}` from `react` and adds all of its methods to this module's export.
+  * `extended-proptypes/lib/extend-from-standalone` imports `PropTypes` from `prop-types` and adds all of its methods to this module's export.
+
 ```js
-import {PropTypes} from "react";
-import `extended-proptypes/lib/extend`;
+import `extended-proptypes/lib/extend-from-react`;
+import PropTypes from "extended-proptypes";
 
 class MyComponent extends Component {
 
@@ -31,23 +46,7 @@ class MyComponent extends Component {
 }
 ```
 
-
-Or, you can also import the whole module and call it on `React.PropTypes`.
-```js
-import {PropTypes} from "react";
-import ExtendedPropTypes from "extended-proptypes";
-
-// New options will now be available on React's `PropTypes` export.
-ExtendedPropTypes(PropTypes);
-
-class MyComponent extends Component {
-
-  static propTypes = {
-    myDate: PropTypes.date.isRequired,
-    mySatanicString: PropTypes.stringMatching(/^6+$/).isRequired,
-  };
-}
-```
+When `NODE_ENV === "production"`, since React will not validate PropTypes, this method exports stubbed versions of each validator.
 
 ## New Prop Types
 

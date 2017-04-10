@@ -3,38 +3,66 @@ const assert            = require("assert");
 const path              = require("path");
 
 const requireUncached   = require("require-uncached");
-const ExtendedPropTypes = require("../src");
-
 const validators = fs.readdirSync(path.join(__dirname, "../src/validators")).map((f) => f.replace(".js", ""));
 
 describe("index file", () => {
 
-  it("can be extended on to base proptypes object", () => {
-    const PropTypes = requireUncached("proptypes");
-    Object.assign(PropTypes, ExtendedPropTypes);
+  describe("in production", () => {
 
-    validators.forEach((validator) => {
-      assert(PropTypes[validator], `should have added ${validator} to proptypes object`);
+    beforeEach(() => process.env.NODE_ENV = "production")
+    afterEach(() => process.env.NODE_ENV = "testing");
+
+    it("exports noops", () => {
+      const ExtendedPropTypes = requireUncached("../src");
+      validators.forEach((name) => {
+        const actual = requireUncached(`../src/validators/${name}`);
+        assert(ExtendedPropTypes[name], `did not export ${name}`);
+        assert(ExtendedPropTypes[name].toString() !== actual.toString(), `exported real validator for ${name}`);
+        ExtendedPropTypes[name]();
+      });
     });
   });
 
-  it("can be called on base proptypes object", () => {
-    const PropTypes = requireUncached("proptypes");
-    ExtendedPropTypes(PropTypes);
+  describe("in development", () => {
 
-    validators.forEach((validator) => {
-      assert(PropTypes[validator], `should have added ${validator} to proptypes object`);
+    beforeEach(() => process.env.NODE_ENV = "dev");
+    afterEach(() => process.env.NODE_ENV = "testing");
+
+    it("exports each proptype", () => {
+      const ExtendedPropTypes = requireUncached("../src");
+      validators.forEach((name) => {
+        const actual = requireUncached(`../src/validators/${name}`);
+        assert(ExtendedPropTypes[name], `did not export ${name}`);
+        assert(ExtendedPropTypes[name].toString() === actual.toString(), `exported stub for ${name}`);
+      });
     });
   });
 
-  // NOTE: THIS TEST MUST BE LAST
-  it("can work by requiring `extend` file", () => {
-    const PropTypes = require("proptypes");
-    require("../src/extend");
+  // NOTE: THIS SECTION MUST BE LAST
+  describe("extend scripts", () => {
 
-    validators.forEach((validator) => {
-      assert(PropTypes[validator], `should have added ${validator} to proptypes object`);
+    it("extend-from-react", () => {
+      const ReactPropTypes = require("react").PropTypes;
+      const StandalonePropTypes = require("prop-types");
+      const ExtendedPropTypes = require("../src");
+
+      require("../src/extend-from-react");
+      Object.keys(ReactPropTypes).forEach((name) => {
+        assert(ExtendedPropTypes[name] === ReactPropTypes[name], `did not export ${name} from react`);
+        assert(ExtendedPropTypes[name] !== StandalonePropTypes[name], `exported ${name} from prop-types`);
+      });
+    });
+
+    it("extend-from-standalone", () => {
+      const ReactPropTypes = require("react").PropTypes;
+      const StandalonePropTypes = require("prop-types");
+      const ExtendedPropTypes = require("../src");
+
+      require("../src/extend-from-standalone");
+      Object.keys(ReactPropTypes).forEach((name) => {
+        assert(ExtendedPropTypes[name] !== ReactPropTypes[name], `exported ${name} from react`);
+        assert(ExtendedPropTypes[name] === StandalonePropTypes[name], `did not export ${name} from prop-types`);
+      });
     });
   });
-
 });
